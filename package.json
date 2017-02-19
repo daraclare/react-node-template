@@ -66,6 +66,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://innersource.accenture.com/scm/cfi/reactjs-template.git"
+    "url": "git@github.com:daraclare/react-node-template.git"
   }
 }
