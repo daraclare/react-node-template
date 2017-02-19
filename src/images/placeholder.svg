@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="600px" height="400px" viewBox="0 0 600 400" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 40.3 (33839) - http://www.bohemiancoding.com/sketch -->
+    <title>placeholder</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="placeholder">
+            <rect id="Rectangle-path" fill="#363A3E" x="0" y="0" width="600" height="400"></rect>
+            <path d="M234.539,148.5 L234.539,251.5 L365.461,251.5 L365.461,148.5 L234.539,148.5 L234.539,148.5 Z M354.909,240.33 L245.707,240.33 L245.707,159.669 L354.909,159.669 L354.909,240.33 L354.909,240.33 L354.909,240.33 Z" id="Shape" fill="#43474B"></path>
+            <polygon id="Shape" fill="#43474B" points="251.58 231.643 274.088 207.984 282.521 211.633 309.13 183.308 319.604 195.836 324.33 192.982 349.898 231.643"></polygon>
+            <circle id="Oval" fill="#43474B" cx="277.582" cy="180.18" r="9.83"></circle>
+        </g>
+    </g>
+</svg>
