@@ -1,12 +1,11 @@
 /*eslint-disable no-console */
 import webpack from 'webpack';
 import webpackConfig from '../webpack.config.prod';
-import colors from 'colors';
 
 process.env.NODE_ENV = 'production'; // prevents hot reloading, which is unnecessary in production
 
 //console message to show the build is in progress
-console.log('Generating minified bundle for production using Webpack. This is take a while …');
+console.log('Generating a minified bundle for production using Webpack …');
 
 //run webpack and show errors if they occur
 webpack(webpackConfig).run((err, stats) => {

@@ -7,9 +7,10 @@ const GLOBALS = {
 };
 
 export default {
-  debug: true,
+  resolve: {
+    extensions: ['*', '.js', '.jsx', '.json']
+  },
   devtool: 'cheap-module-source-map', // Note: changing this reduced app build size
-  noInfo: false,
   entry: './src/index',
   target: 'web',
   output: {
@@ -21,17 +22,21 @@ export default {
     contentBase: './dist'
   },
   plugins: [
+    new webpack.LoaderOptionsPlugin({
+      minimize: true,
+      debug: false,
+      noInfo: true // set to false to see a list of every file being bundled.
+    }),
     new webpack.optimize.OccurenceOrderPlugin(), //optimises the order the files are bundled in for optimimal minification
     new webpack.DefinePlugin(GLOBALS), //defines variables that are made available to the libraries that webpack bundles, removes stuff like proptypes for production
     new ExtractTextPlugin('styles.css'), //extracts css and bundles it into a file called styles.css
-    new webpack.optimize.DedupePlugin(), //elimiates duplicate packages in the final bundle to keep it as small as possible
     new webpack.optimize.UglifyJsPlugin() //minifies JavaScript
   ],
   module: {
-    loaders: [
-      {test: /\.js$/, include: path.join(__dirname, 'src'), loaders: ['babel']},
+    rules: [
+      {test: /\.js$/, include: path.join(__dirname, 'src'), loaders: ['babel-loader']},
       {test: /(\.css)$/, loader: ExtractTextPlugin.extract("css?sourceMap")},
-      {test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: 'file'},
+      {test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: 'file-loader'},
       {test: /\.(woff|woff2)$/, loader: 'url?prefix=font/&limit=5000'},
       {test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=application/octet-stream'},
       {test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=image/svg+xml'},
