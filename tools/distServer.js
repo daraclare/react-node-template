@@ -6,7 +6,7 @@ import open from 'open';
 /* eslint-disable no-console */
 
 //assign a variable to the port number
-const port = 3000;
+const port = 4000;
 //create an instance of express
 const app = express();
 
