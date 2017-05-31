@@ -15,31 +15,42 @@ export default {
   },
   target: 'web',
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, 'build/dist'),
     publicPath: '/',
     filename: '[name].[chunkhash].js'
   },
   plugins: [
-    // Global loader configuration
+
+    new webpack.HashedModuleIdsPlugin(),
+
+    // for compatibility with old loaders, loaders can be switched to minimize mode via plugin
     new webpack.LoaderOptionsPlugin({
       minimize: true,
       debug: false,
-      noInfo: true // set to false to see a list of every file being bundled.
+      noInfo: false
     }),
 
-    // Generate an external css file with a hash in the filename
-    new ExtractTextPlugin('[name].[contenthash].css'),
+    // Extract text from bundle into a file
+    new ExtractTextPlugin({
+      filename: '[name]-[contenthash].css',
+      disable: false,
+      allChunks: true
+    }),
 
-    // Hash the files using MD5 so that their names change when the content changes.
-    new WebpackMd5Hash(),
-
-    // Use CommonsChunkPlugin to create a separate bundle
-    // of vendor libraries so that they're cached separately.
+    // Create separately cached bundle of vendor libraries.
     new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor'
+      name: 'vendor',
+      minChunks: Infinity
     }),
 
-    // Create HTML file that includes reference to bundled JS.
+    // Remove minifed error
+    new webpack.DefinePlugin({
+      "process.env": {
+       NODE_ENV: JSON.stringify("production")
+       }
+    }),
+
+    // Simplifies creation of HTML files to serve webpack bundles
     new HtmlWebpackPlugin({
       template: 'src/index.html',
       minify: {
@@ -54,11 +65,11 @@ export default {
         minifyCSS: true,
         minifyURLs: true
       },
-      inject: true,
-      // Properties you define here are available in index.html
-      // using htmlWebpackPlugin.options.varName
-      trackJSToken: 'INSERT YOUR TOKEN HERE'
+      inject: true
     }),
+
+    // Plugin to replace a standard webpack chunkhash with md5
+    new WebpackMd5Hash(),
 
     // Minify JS
     new webpack.optimize.UglifyJsPlugin()
@@ -66,7 +77,9 @@ export default {
   module: {
     loaders: [
       {test: /\.js$/, exclude: /node_modules/, loaders: ['babel-loader']},
-      {test: /\.css$/, loader: ExtractTextPlugin.extract('css-loader?sourceMap')}
+      {test: /\.css$/, loader: ExtractTextPlugin.extract('css-loader?sourceMap')},
+      {test: /\.(jpe?g|png|gif|svg)$/i, use: [ 'file-loader?hash=sha512&digest=hex&name=[hash].[ext]',
+        'image-webpack-loader?bypassOnDebug&optimizationLevel=7&interlaced=false']},
     ]
   }
 };

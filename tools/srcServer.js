@@ -28,7 +28,7 @@ app.get('*', function(req, res) {
 //start up express on port 3000
 app.listen(port, function(err) {
   if (err) {
-    console.log(err);
+    console.error(err);
   } else {
     open(`http://localhost:${port}`);
   }

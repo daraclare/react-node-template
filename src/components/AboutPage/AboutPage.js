@@ -1,10 +1,11 @@
 import React from 'react';
+import './aboutpage.css';
 
 export default class AboutPage extends React.Component {
   render() {
     return (
       <div>
-        <h1>AboutPage Component</h1>
+        <h1 className="aboutpage">AboutPage Component</h1>
       </div>
 
     );

@@ -5,17 +5,17 @@ import cheerio from 'cheerio';
 
 fs.readFile('src/index.html', 'utf8', (err, markup) => {
   if(err) {
-    return console.log(err);
+    return console.error(err);
   }
 
   const $ = cheerio.load(markup);
 
   $('head').prepend('<link rel="stylesheet" href="styles.css">');
 
-  fs.writeFile('dist/index.html', $.html(), 'utf8', function(err) {
+  fs.writeFile('build/dist/index.html', $.html(), 'utf8', function(err) {
     if(err) {
-      return console.log(err);
+      return console.error(err);
     }
-    console.log('index html written to dist folder');
+    console.info('index html written to build/dist folder');
   });
 });

@@ -11,15 +11,15 @@ const port = 4000;
 const app = express();
 
 //configure express to serve static files
-app.use(express.static('dist'));
+app.use(express.static('build/dist'));
 
 app.get('*', function(req, res) {
-  res.sendFile(path.join(__dirname, '../dist/index.html'));
+  res.sendFile(path.join(__dirname, '../build/dist/index.html'));
 });
 
 app.listen(port, function(err) {
   if(err) {
-    console.log(err);
+    console.error(err);
   } else {
     open(`http://localhost:${port}`);
   }

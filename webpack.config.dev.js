@@ -14,7 +14,7 @@ export default {
   ],
   target: 'web',
   output: {
-    path: __dirname + '/dist', // Note: Physical files are only output by the production build task `npm run build`.
+    path: __dirname + '/build/dist', // Note: Physical files are only output by the production build task `npm run build`.
     publicPath: '/',
     filename: 'bundle.js'
   },
@@ -38,8 +38,8 @@ export default {
       {test: /\.(woff|woff2)$/, use: 'url?prefix=font/&limit=5000'},
       {test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, use: 'url?limit=10000&mimetype=application/octet-stream'},
       {test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, use: 'url?limit=10000&mimetype=image/svg+xml'},
-      {test: /\.(jpe?g|png|gif|svg)$/i, use: [ 'file?hash=sha512&digest=hex&name=[hash].[ext]',
-        'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false']},
+      {test: /\.(jpe?g|png|gif|svg)$/i, use: [ 'file-loader?hash=sha512&digest=hex&name=[hash].[ext]',
+        'image-webpack-loader?bypassOnDebug&optimizationLevel=7&interlaced=false']},
       {test: /\.js|.jsx?$/, exclude: /(node_modules|bower_components)/, loader: 'babel-loader'},
       {test: /\.svg$/,
         use: [
@@ -47,7 +47,7 @@ export default {
             loader: 'babel-loader'
           },
           {
-            loader: 'react-svg-loader',
+            loader: 'svg-react-loader',
             query: {
               svgo: {
                 plugins: [{removeTitle: false}],
