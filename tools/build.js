@@ -1,6 +1,6 @@
 /*eslint-disable no-console */
 import webpack from 'webpack';
-import webpackConfig from '../webpack.config.prod';
+import webpackConfig from '../webpack.config';
 
 process.env.NODE_ENV = 'production'; // prevents hot reloading, which is unnecessary in production
 
