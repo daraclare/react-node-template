@@ -19,7 +19,7 @@ const config = {
       inProjectSrc('normalize'),
     ],
     main: [
-      inProjectSrc('App'),
+      inProjectSrc('index'),
     ],
   },
   devtool: 'source-map',

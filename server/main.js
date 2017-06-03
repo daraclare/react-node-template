@@ -67,10 +67,10 @@ if (NODE_ENV === 'production') {
   const app = express();
 
   // configure express to serve static files
-  app.use(express.static('build/dist'));
+  app.use(express.static('dist'));
 
   app.get('*', function (req, res) {
-    res.sendFile(path.join(__dirname, '../build/dist/index.html'));
+    res.sendFile(path.join(__dirname, './dist/index.html'));
   });
 
   app.listen(port, function (err) {
