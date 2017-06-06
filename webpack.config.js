@@ -49,6 +49,8 @@ const config = {
   ],
 };
 
+process.traceDeprecation = true;
+
 // JavaScript
 // ------------------------------------
 config.module.rules.push({
