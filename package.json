@@ -5,7 +5,7 @@
   "scripts": {
     "prestart": "npm run security-check",
     "start": "NODE_ENV=development npm-run-all --parallel open:src lint:watch test:watch",
-    "open:src": "babel-node tools/srcServer.js",
+    "open:src": "babel-node build/server.js",
     "lint": "node_modules/.bin/esw webpack.config.js src tools build tests --color",
     "lint:watch": "npm run lint -- --watch",
     "test": "mocha --reporter progress tools/testSetup.js \"**/*.spec.js\"",
@@ -14,7 +14,7 @@
     "remove-dist": "node_modules/.bin/rimraf ./dist",
     "prebuild": "npm-run-all clean-dist test lint",
     "build": "NODE_ENV=production babel-node build/build.js",
-    "postbuild": "babel-node tools/distServer.js",
+    "postbuild": "NODE_ENV=production babel-node build/server.js",
     "security-check": "nsp check"
   },
   "author": "Dara Carolan",
@@ -56,14 +56,15 @@
     "image-webpack-loader": "2.0.0",
     "jsdom": "9.12.0",
     "mocha": "3.2.0",
+    "node-sass": "^4.5.3",
     "npm-run-all": "4.0.1",
     "nsp": "^2.6.3",
     "open": "0.0.5",
     "react-addons-test-utils": "15.5.1",
     "react-dom": "15.5.4",
     "rimraf": "2.6.1",
+    "sass-loader": "^6.0.5",
     "style-loader": "0.16.1",
-    "svg-react-loader": "0.3.7",
     "url-loader": "0.5.8",
     "webpack": "2.2.1",
     "webpack-dev-middleware": "1.10.1",
@@ -72,6 +73,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/daraclare/react-node-template.git"
+    "url": "https://github.com/daraclare/react-node-template"
   }
 }

@@ -23,12 +23,10 @@ webpack(webpackConfig).run((err, stats) => {
     jsonStats.warnings.map(warning => console.error(warning));
   }
 
-console.info('webpack stats: ${stats}');
+console.info(`webpack stats: ${stats}`);
 
 // console log that the build has succeeded
 console.info('Build worked, code is in dist folder');
-
-console.info('Production server is running at http://localhost:4000');
 
 return 0;
 
