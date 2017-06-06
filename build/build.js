@@ -2,8 +2,6 @@
 import webpack from 'webpack';
 import webpackConfig from '../webpack.config';
 
-process.env.NODE_ENV = 'production'; // prevents hot reloading, which is unnecessary in production
-
 //console message to show the build is in progress
 console.info('Generating a minified bundle for production using Webpack …');
 
@@ -29,6 +27,8 @@ console.info('webpack stats: ${stats}');
 
 // console log that the build has succeeded
 console.info('Build worked, code is in dist folder');
+
+console.info('Production server is running at http://localhost:4000');
 
 return 0;
 
