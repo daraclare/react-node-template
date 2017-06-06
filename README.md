@@ -17,7 +17,7 @@ ES Linting is also implemented to reveal errors in JavaScript code and sure best
 
 ## Getting Started
 Clone the ReactJS Template repo, replacing 'projectname' with your project name:
-```git clone https://github.com/daraclare/react-node-template.git projectname```
+```git clone ssh://git@newsource.accenture.com/cfi/reactjs-template.git projectname```
 ```cd projectname```
 
 Remove the existing GIT files:
