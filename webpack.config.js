@@ -120,9 +120,6 @@ export default {
   entry: entry,
   target: 'web',
   output: output,
-  devServer: {
-    contentBase: path.resolve(__dirname, 'src')
-  },
   plugins: plugins,
   module: {
     rules: [{

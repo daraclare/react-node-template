@@ -31,12 +31,19 @@ if(DEVELOPMENT) {
 
   // configure express
   app.use(require('webpack-dev-middleware')(compiler, {
-    noInfo: true, // no info on the command line
-    publicPath: config.output.publicPath
+    publicPath: config.output.publicPath,
+    contentBase: path.resolve(__dirname, 'src'),
+    hot: true,
+    quiet: false,
+    noInfo: false,
+    lazy: false,
+    stats: 'normal'
   }));
 
   // use webpack hot middleware for hot reloading
-  app.use(require('webpack-hot-middleware')(compiler));
+  app.use(require('webpack-hot-middleware')(compiler, {
+    path: '/__webpack_hmr'
+  }));
 
   // serve index.html for all requests
   app.get('*', function(req, res) {
