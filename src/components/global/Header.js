@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom'; // Switch will iterate over the routes 
 const Header = () => {
   return (
     <div>
-      <Link to="/">Home</Link>
+      <Link to="/">HOME</Link>
       {" | "}
-      <Link to="/about">About</Link>
+      <Link to="/about">ABOUT</Link>
     </div>
   );
 };
