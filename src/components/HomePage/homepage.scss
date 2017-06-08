@@ -1,3 +1,10 @@
-.primary {
-  color: slategrey;
+$primary-color: slategrey;
+
+body {
+  color: $primary-color;
+  text-align: center;
+}
+
+img {
+  height: 100px;
 }
