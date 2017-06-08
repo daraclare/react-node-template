@@ -9,7 +9,6 @@ const PRODUCTION = process.env.NODE_ENV === 'production';
 
 let entry = PRODUCTION
   ? {
-    vendor: path.resolve(__dirname, 'src/vendor'),
     index: path.resolve(__dirname, 'src/index')
   }
   : [
@@ -19,7 +18,6 @@ let entry = PRODUCTION
   ];
 
 let devtool = PRODUCTION ? 'source-map' : 'cheap-module-eval-source-map';
-
 
 let output = DEVELOPMENT
   ? {
@@ -45,7 +43,6 @@ let plugins = DEVELOPMENT
   ]
 
   :  [
-
     new webpack.HashedModuleIdsPlugin(),
 
     // for compatibility with old loaders, loaders can be switched to minimize mode via plugin
@@ -109,9 +106,10 @@ let plugins = DEVELOPMENT
 
   let cssLoaders = PRODUCTION
   ? ExtractTextPlugin.extract({
-    use: 'css-loader'
+    use: ['css-loader', 'sass-loader']
   })
-  : ['style-loader', 'css-loader'];
+  : ['style-loader', 'css-loader', 'sass-loader'];
+
 
 export default {
   resolve: {
@@ -128,7 +126,7 @@ export default {
   plugins: plugins,
   module: {
     rules: [{
-      test: /\.css$/,
+      test: /\.s?css$/,
       use: cssLoaders,
       exclude: '/node_modules/'
     },{
@@ -141,13 +139,10 @@ export default {
       use: 'file-loader'
     },{
       test: /\.(woff|woff2)$/,
-      use: 'url?prefix=font/&limit=5000'
+      use: 'url-loader?prefix=font/&limit=5000'
     },{
       test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
-      use: 'url?limit=10000&mimetype=application/octet-stream'
-    },{
-      test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
-      use: 'url?limit=10000&mimetype=image/svg+xml'
+      use: 'url-loader?limit=10000&mimetype=application/octet-stream'
     },{
       test: /\.(jpe?g|png|gif|svg)$/i,
       use: [ 'file-loader?hash=sha512&digest=hex&name=[hash].[ext]',       'image-webpack-loader?bypassOnDebug&optimizationLevel=7&interlaced=false']

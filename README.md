@@ -48,7 +48,7 @@ Below is a list of each entry in the package.json file and the explanation for e
 ### Scripts ###
 Scripts are used to speed up the restarting of the application. By running 'npm start' the developer can start the lint watch to watch for errors in the 'src' folder, run the tests in the 'tests' folders, open the browser at localhost:{portnumber} and watch for changes, as well as enable hot-reloading. The instructions for express are loaded from the files in the 'tools' folder.
 
-The production build is managed by the prebuild, build and postbuild scripts. Prebuild cleans out the existing code by deleting the 'dist' folder and making a new directory. The build command builds the HTML, creates the bundle.js file, and extracts the CSS into a separate files. These are all found in the 'dist' folder. Postbuild will run after and run the distServer file so the results can be viewed.
+The production build is managed by the prebuild, build and postbuild scripts. Prebuild cleans out the existing code by deleting the 'dist' folder and making a new directory. The build command builds the HTML, creates the bundle.js file, and extracts the CSS into a separate files. These are all found in the 'dist' folder. Postbuild will run after and run the server file so the results can be viewed.
 
 ### Babel ###
 Babel is used to transpile ES6 code into readable vanilla ES5 with source maps.  
