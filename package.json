@@ -97,6 +97,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/daraclare/react-node-template"
+    "url": "https://github.com/daraclare/react-node-template.git"
   }
 }
