@@ -17,7 +17,7 @@ ES Linting is also implemented to reveal errors in JavaScript code and sure best
 
 ## Getting Started
 Clone the ReactJS Template repo, replacing 'projectname' with your project name:
-```git clone git@github.com:daraclare/react-node-template.git projectname```
+```git clone ssh://git@newsource.accenture.com/cfi/reactjs-template.git projectname```
 ```cd projectname```
 
 Remove the existing GIT files:
@@ -57,7 +57,7 @@ Babel is used to transpile ES6 code into readable vanilla ES5 with source maps.
 **babel-loader:** This package allows transpiling JavaScript files using Babel and webpack.  
 **babel-plugin-react-display-name:** Add displayName to React.createClass calls.  
 **babel-polyfill:** Provides polyfills necessary for a full ES2015+ environment, such as Promises and Object.assign  
-**babel-preset-es2015:** Babel preset for all es2015 plugins, for compiling ES2015(ES6) to ES5  
+**babel-preset-es2017:** Babel preset for all es2017 plugins, for compiling ES2017(ES8) to ES5  
 **babel-preset-react:** Babel preset for all React plugins.  
 **babel-preset-react-hmre:** Babel preset for React HMR and Error Catching (A React Transform that enables hot reloading React classes using Hot Module Replacement API)   
 **babel-register:** One of the ways you can use Babel is through the require hook. The require hook will bind itself to node’s require and automatically compile files on the fly.
@@ -68,7 +68,7 @@ Babel is used to transpile ES6 code into readable vanilla ES5 with source maps.
 **css-loader:** css loader module for webpack  
 **enzyme:** Enzyme is a JavaScript Testing utility for React that makes it easier to assert, manipulate, and traverse your React Components' output.  
 **eslint:** ES Linting Core to reveal errors in JavaScript code and sure best practices  
-**eslint-plugin-import:** This plugin intends to support linting of ES2015+ (ES6+) import/export syntax, and prevent issues with misspelling of file paths and import names. All the goodness that the ES2015+ static module syntax intends to provide, marked up in your editor.  
+**eslint-plugin-import:** This plugin intends to support linting of ES2016+ (ES7+) import/export syntax, and prevent issues with misspelling of file paths and import names. All the goodness that the ES2016+ static module syntax intends to provide, marked up in your editor.  
 **eslint-plugin-react:** React specific linting rules for ESLint  
 **eslint-watch:** Run eslint with watch mode  
 **eventsource-polyfill:** Polyfill for EventSource  

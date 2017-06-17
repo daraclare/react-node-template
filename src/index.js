@@ -1,10 +1,11 @@
-import 'babel-polyfill'; //used for ES6 features that need a polyfill, like promises & generators
+import 'babel-polyfill';
 import React from 'react';
 import { render } from 'react-dom';
-import { BrowserRouter } from 'react-router-dom';
-import App from './App';
+import { BrowserRouter, Route } from 'react-router-dom';
+import App from './components/App';
 import './styles/styles.css';
 
+//enable hot module replacement;
 if(DEVELOPMENT) { //eslint-disable-line
   if (module.hot) {
     module.hot.accept();
@@ -12,6 +13,6 @@ if(DEVELOPMENT) { //eslint-disable-line
 }
 
 render(
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>, document.getElementById('root'));
+    <BrowserRouter>
+      <Route path="/" component={App} />
+    </BrowserRouter>, document.getElementById('root'));

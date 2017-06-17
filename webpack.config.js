@@ -113,7 +113,8 @@ let plugins = DEVELOPMENT
 
 export default {
   resolve: {
-    extensions: ['*', '.js', '.jsx', '.json']
+    extensions: ['*', '.js', '.jsx', '.json'],
+    modules: [path.resolve(__dirname, './src'), 'node_modules']
   },
   context: __dirname,
   devtool: devtool,
@@ -136,13 +137,13 @@ export default {
       use: 'file-loader'
     },{
       test: /\.(woff|woff2)$/,
-      use: 'url-loader?prefix=font/&limit=5000'
+      use: 'url-loader?prefix=font/&limit=5000&name=[name]-[hash].[ext]'
     },{
       test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
       use: 'url-loader?limit=10000&mimetype=application/octet-stream'
     },{
       test: /\.(jpe?g|png|gif|svg)$/i,
-      use: [ 'file-loader?hash=sha512&digest=hex&name=[hash].[ext]',       'image-webpack-loader?bypassOnDebug&optimizationLevel=7&interlaced=false']
+      use: [ 'file-loader?hash=sha512&digest=hex&name=[name]-[hash].[ext]',       'image-webpack-loader?bypassOnDebug&optimizationLevel=7&interlaced=false']
     },
     ]
   }
