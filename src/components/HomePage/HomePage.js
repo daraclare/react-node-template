@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+
 import './homepage.scss';
 
 export default class HomePage extends Component {
@@ -6,6 +7,7 @@ export default class HomePage extends Component {
   render() {
     return (
       <div>
+
         <img src={require("../../../public/images/react-js-img.png")} />
         <h1 className="primary">React Template HomePage</h1>
 

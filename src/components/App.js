@@ -1,19 +1,19 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Header from './global/Header';
 import { Route } from 'react-router-dom';
 import HomePage from './HomePage/HomePage';
-import ReduxPage from './ReduxPage/ReduxPage';
-import ApiPage from './ApiPage/ApiPage';
+import ReduxPageContainer from './ReduxPage/ReduxPageContainer';
+import ApiPageContainer from './ApiPage/ApiPageContainer';
 
-export default class App extends React.Component {
+export default class App extends Component {
 
   render() {
     return (
       <div>
         <Header />
-        <Route exact path="/" component={HomePage}/>
-        <Route path="/redux" component={ReduxPage}/>
-        <Route path="/api" component={ApiPage}/>
+        <Route exact path="/" component={HomePage} />
+        <Route path="/redux" component={ReduxPageContainer} />
+        <Route path="/api" component={ApiPageContainer}/>
       </div>
     );
   }
