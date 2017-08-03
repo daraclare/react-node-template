@@ -1,4 +1,4 @@
-FROM node:7.4.0-slim
+FROM node:8.1.2
 
 # Create app directory
 RUN mkdir -p /code
@@ -12,6 +12,8 @@ RUN npm install
 # Bundle app source
 COPY . /code
 
-EXPOSE 8080
+EXPOSE 4000
 
-CMD [ "npm", "start" ]
+RUN npm run build
+
+CMD npm run start:dist

@@ -8,14 +8,14 @@
     "open:src": "babel-node build/server.js",
     "lint": "esw webpack.config.js src tools build tests --color",
     "lint:watch": "npm run lint -- --watch",
-    "test": "cross-env NODE_ENV=test nyc mocha --reporter progress tools/testSetup.js \"**/*.spec.js\" --compilers js:babel-register",
-    "test:watch": "npm-run-all test -- --watch",
-    "precoverage": "npm-run-all test",
+    "test": "cross-env NODE_ENV=test nyc mocha --reporter progress tools/testSetup.js src/**/*.spec.js tests/**/*.spec.js --compilers js:babel-register",
+    "test:watch": "npm run test -- --watch",
+    "precoverage": "npm run test",
     "coverage": "babel-node tools/open-coverage.js",
     "clean-dist": "node_modules/.bin/rimraf ./dist && mkdirp ./dist",
     "prebuild": "npm-run-all clean-dist test lint",
-    "build": "cross-env NODE_ENV=production babel-node build/build.js",
-    "postbuild": "cross-env NODE_ENV=production babel-node build/server.js",
+    "build": "cross-env NODE_ENV=production babel-node build/build.js && cp public/* dist/",
+    "start:dist": "cross-env NODE_ENV=production babel-node build/server.js",
     "security-check": "nsp check"
   },
   "nyc": {
@@ -60,7 +60,6 @@
     "babel-preset-stage-0": "^6.24.1",
     "babel-register": "^6.24.1",
     "chai": "^3.5.0",
-    "cheerio": "~0.22.0",
     "compression": "^1.6.2",
     "cross-env": "^3.1.4",
     "css-loader": "^0.26.1",
@@ -77,6 +76,7 @@
     "image-webpack-loader": "^2.0.0",
     "istanbul": "^0.4.5",
     "jsdom": "^9.12.0",
+    "json-loader": "^0.5.4",
     "mkdirp": "^0.5.1",
     "mocha": "^3.2.0",
     "node-sass": "^4.5.3",
@@ -97,6 +97,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/daraclare/react-node-template.git"
+    "url": "https://innersource.accenture.com/projects/CFI/repos/template-react-with-or-without-redux"
   }
 }

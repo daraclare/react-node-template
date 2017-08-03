@@ -45,6 +45,9 @@ if(DEVELOPMENT) {
     path: '/__webpack_hmr'
   }));
 
+  // publish 'public' folder
+  app.use(express.static('./public'));
+
   // serve index.html for all requests
   app.get('*', function(req, res) {
     res.sendFile(path.join( __dirname, '../src/index.html'));
