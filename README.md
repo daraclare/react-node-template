@@ -1,16 +1,13 @@
 # README: React Template with/without Redux #
 This repo is a template for developing ReactJS projects. The repository also includes a branch for projects requiring Redux, use ```git pull origin redux```. API integration is setup with and without Redux.
 
-**We want to improve!** Please use **[this link](https://fleet.alm.accenture.com/thedockwiki/display/SWE/Issue+Tracker+for+All+Template)** to report any issues with this template.  
-
-
 ## Quick Start Guide
 Below is a quick start guide to using the template for your project.  
 
 *note: on Windows, ensure the path to the folder does not contain capital letters, otherwise this will cause linting errors*
 
 ```sh
-git clone ssh://git@innersource.accenture.com/cfi/template-react-with-or-without-redux.git myProjectName
+git clone git@github.com:daraclare/react-node-template.git myProjectName
 
 cd myProjectName
 
