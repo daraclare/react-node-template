@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
+import image from "../../images/react-js-img.png";
 
 import './homepage.scss';
 
 export default class HomePage extends Component {
-
   render() {
     return (
       <div>
-
-        <img src={require("../../../public/images/react-js-img.png")} />
+        <img src={image} />
         <h1 className="primary">React Template HomePage</h1>
 
         <h5>CSS/Sass</h5>

@@ -8,10 +8,8 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    fetchData: (url) => dispatch(Actions.fetchApiData(url))
-  };
+const mapDispatchToProps = {
+  fetchData: Actions.fetchApiData
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ApiPage);

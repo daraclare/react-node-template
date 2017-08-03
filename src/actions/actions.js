@@ -8,7 +8,7 @@ export const FETCH_API = 'FETCH_API';
 export const API_ERROR = 'API_ERROR';
 
 // define action for increment
-export function increment(counter){
+export function increment(counter = 1){
   return {
     type: INCREMENT,
     payload: {
@@ -18,7 +18,7 @@ export function increment(counter){
 }
 
 // define action for decrement
-export function decrement(counter){
+export function decrement(counter = 1){
   return {
     type: DECREMENT,
     payload: {

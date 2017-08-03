@@ -8,6 +8,10 @@ function mapStateToProps(state) {
   };
 }
 
-const mapDispatchToProps = Actions;
+const mapDispatchToProps = {
+  increment: Actions.increment,
+  decrement: Actions.decrement,
+  fetchApiData: Actions.fetchApiData
+};
 
 export default connect( mapStateToProps, mapDispatchToProps )(ReduxPage);

@@ -1,6 +1,6 @@
 import 'babel-polyfill';
 import React from 'react';
-import { render } from 'react-dom';
+import { ReactDOM, render } from 'react-dom';
 import { BrowserRouter, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import configureStore from './store/configureStore';
@@ -12,13 +12,23 @@ const store = configureStore();
 //enable hot module replacement;
 if(DEVELOPMENT) { //eslint-disable-line
   if (module.hot) {
-    module.hot.accept();
+    // Setup hot module replacement
+    module.hot.accept(App, () =>
+      setImmediate(() => {
+        ReactDOM.unmountComponentAtNode(document.getElementById('root'));
+        render();
+      })
+    );
   }
 }
 
-render(
+let ReduxRoot = () => (
   <Provider store={store}>
     <BrowserRouter>
       <Route path="/" component={App} />
     </BrowserRouter>
-  </Provider>, document.getElementById('root'));
+  </Provider>
+);
+
+render(
+  <ReduxRoot />, document.getElementById('root'));

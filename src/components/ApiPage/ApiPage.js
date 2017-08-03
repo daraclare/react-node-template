@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 export default class ItemList extends Component {
 
   componentDidMount() {
-    this.props.fetchData('https://jsonplaceholder.typicode.com/users');
+    this.props.fetchData('/data.json');
   }
 
   render() {
@@ -14,9 +14,11 @@ export default class ItemList extends Component {
 
         <h1>React & Redux API Example</h1>
 
-        {this.props.apiData.map((data, index) => {
-          return <p key={index}>{data.name}: <a href={data.email}>{data.email}</a></p>;
-        })}
+        <h4>The below is called from a data.json file in the <code>public</code> folder</h4>
+
+          {this.props.apiData.map((data, index) => {
+            return <p key={index}>{data.name}: <a href={`mailto:${data.email}`}>{data.email}</a></p>;
+          })}
 
       </div>
       );
