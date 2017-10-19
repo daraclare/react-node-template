@@ -1,18 +1,16 @@
-import React, { Component } from 'react';
-import axios from 'axios';
+import React, { Component } from "react";
+import axios from "axios";
 
 export default class ApiPage extends Component {
-
   constructor() {
     super();
-    this.state ={
+    this.state = {
       data: []
     };
   }
 
   componentDidMount() {
-    axios.get('/data.json')
-    .then(response => {
+    axios.get("/data.json").then(response => {
       this.setState({
         data: response.data
       });
@@ -25,9 +23,12 @@ export default class ApiPage extends Component {
         <h1>React API Example</h1>
 
         {this.state.data.map((data, index) => {
-            return <p key={index}>{data.name}: <a href={`mailto:${data.email}`}>{data.email}</a></p>;
+          return (
+            <p key={index}>
+              {data.name}: <a href={`mailto:${data.email}`}>{data.email}</a>
+            </p>
+          );
         })}
-
       </div>
     );
   }
