@@ -1,6 +1,6 @@
-import { connect } from 'react-redux';
-import ReduxPage from './ReduxPage.js';
-import * as Actions from '../../actions/actions';
+import { connect } from "react-redux";
+import ReduxPage from "./ReduxPage.js";
+import * as Actions from "../../actions/actions";
 
 function mapStateToProps(state) {
   return {
@@ -14,4 +14,4 @@ const mapDispatchToProps = {
   fetchApiData: Actions.fetchApiData
 };
 
-export default connect( mapStateToProps, mapDispatchToProps )(ReduxPage);
+export default connect(mapStateToProps, mapDispatchToProps)(ReduxPage);

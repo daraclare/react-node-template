@@ -1,8 +1,8 @@
-import { connect } from 'react-redux';
-import ApiPage from './ApiPage.js';
-import * as Actions from '../../actions/actions';
+import { connect } from "react-redux";
+import ApiPage from "./ApiPage.js";
+import * as Actions from "../../actions/actions";
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     apiData: state.apiData
   };

@@ -1,21 +1,22 @@
-import 'babel-polyfill';
-import React from 'react';
-import { ReactDOM, render } from 'react-dom';
-import { BrowserRouter, Route } from 'react-router-dom';
-import { Provider } from 'react-redux';
-import configureStore from './store/configureStore';
-import App from './components/App';
-import './styles/styles.css';
+import "babel-polyfill";
+import React from "react";
+import { ReactDOM, render } from "react-dom";
+import { BrowserRouter, Route } from "react-router-dom";
+import { Provider } from "react-redux";
+import configureStore from "./store/configureStore";
+import App from "./components/App";
+import "./styles/styles.css";
 
 const store = configureStore();
 
 //enable hot module replacement;
-if(DEVELOPMENT) { //eslint-disable-line
+// eslint-disable-next-line
+if (DEVELOPMENT) {
   if (module.hot) {
     // Setup hot module replacement
     module.hot.accept(App, () =>
       setImmediate(() => {
-        ReactDOM.unmountComponentAtNode(document.getElementById('root'));
+        ReactDOM.unmountComponentAtNode(document.getElementById("root"));
         render();
       })
     );
@@ -30,5 +31,4 @@ let ReduxRoot = () => (
   </Provider>
 );
 
-render(
-  <ReduxRoot />, document.getElementById('root'));
+render(<ReduxRoot />, document.getElementById("root"));

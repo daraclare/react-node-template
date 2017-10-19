@@ -1,8 +1,5 @@
 {
-
-  "presets": [
-    "env", "react", "es2017", "stage-0"
-  ],
+  "presets": ["env", "react", "es2017", "stage-0"],
 
   "env": {
     "development": {
@@ -13,21 +10,21 @@
   "env": {
     "production": {
       "presets": [
-        ["env", {
-          "es2017": {
-            "modules": false
+        [
+          "env",
+          {
+            "es2017": {
+              "modules": false
+            }
           }
-        }]
+        ]
       ]
     }
   },
 
   "env": {
     "test": {
-      "plugins": [
-        "istanbul"
-      ]
+      "plugins": ["istanbul"]
     }
   }
-
 }

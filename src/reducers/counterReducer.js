@@ -1,9 +1,7 @@
-import * as types from '../actions/actions.js';
+import * as types from "../actions/actions.js";
 
-export default function counterReducer(state = 0, action){
-
-  switch(action.type) {
-
+export default function counterReducer(state = 0, action) {
+  switch (action.type) {
     case types.INCREMENT:
       return state + action.payload.counter;
 
@@ -13,5 +11,4 @@ export default function counterReducer(state = 0, action){
     default:
       return state;
   }
-
 }

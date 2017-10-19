@@ -1,9 +1,8 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import './reduxpage.css';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import "./reduxpage.css";
 
 export default class ReduxPage extends Component {
-
   constructor() {
     super();
 
