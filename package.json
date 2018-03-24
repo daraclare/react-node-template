@@ -15,7 +15,7 @@
     "precoverage": "npm run test",
     "coverage": "babel-node tools/open-coverage.js",
     "clean-dist": "node_modules/.bin/rimraf ./dist && mkdirp ./dist",
-    "prebuild": "npm-run-all clean-dist test lint",
+    "prebuild": "npm-run-all clean-dist lint",
     "build":
       "cross-env NODE_ENV=production babel-node build/build.js && cp public/* dist/",
     "start:dist": "cross-env NODE_ENV=production babel-node build/server.js",
