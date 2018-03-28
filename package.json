@@ -4,28 +4,34 @@
   "description": "ReactJS Project",
   "scripts": {
     "prestart": "npm run security-check",
-    "start":
-      "cross-env NODE_ENV=development npm-run-all --parallel open:src lint:watch test:watch",
+    "start": "cross-env NODE_ENV=development npm-run-all --parallel open:src lint:watch test:watch",
     "open:src": "babel-node build/server.js",
     "lint": "esw webpack.config.js src tools build tests --color",
     "lint:watch": "npm run lint -- --watch",
-    "test":
-      "cross-env NODE_ENV=test nyc mocha --reporter progress tools/testSetup.js src/**/*.spec.js tests/**/*.spec.js --compilers js:babel-register",
+    "test": "cross-env NODE_ENV=test nyc mocha --reporter progress tools/testSetup.js src/**/*.spec.js tests/**/*.spec.js --compilers js:babel-register",
     "test:watch": "npm run test -- --watch",
     "precoverage": "npm run test",
     "coverage": "babel-node tools/open-coverage.js",
     "clean-dist": "node_modules/.bin/rimraf ./dist && mkdirp ./dist",
     "prebuild": "npm-run-all clean-dist test lint",
-    "build":
-      "cross-env NODE_ENV=production babel-node build/build.js && cp public/* dist/",
+    "build": "cross-env NODE_ENV=production babel-node build/build.js && cp public/* dist/",
     "start:dist": "cross-env NODE_ENV=production babel-node build/server.js",
     "security-check": "nsp check"
   },
   "nyc": {
-    "require": ["babel-register"],
-    "include": ["src/**/*.js"],
-    "exclude": ["src/**/*.spec.js"],
-    "reporter": ["lcov", "text"],
+    "require": [
+      "babel-register"
+    ],
+    "include": [
+      "src/**/*.js"
+    ],
+    "exclude": [
+      "src/**/*.spec.js"
+    ],
+    "reporter": [
+      "lcov",
+      "text"
+    ],
     "all": true,
     "sourceMap": false,
     "instrument": false
@@ -39,7 +45,8 @@
     "prop-types": "^15.6.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
-    "react-router-dom": "^4.2.2"
+    "react-router-dom": "^4.2.2",
+    "react-test-renderer": "^16.2.0"
   },
   "devDependencies": {
     "babel-cli": "^6.23.0",
@@ -57,7 +64,8 @@
     "compression": "^1.6.2",
     "cross-env": "^3.1.4",
     "css-loader": "^0.26.1",
-    "enzyme": "^2.9.1",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
     "eslint": "^3.19.0",
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-react": "^6.10.3",
@@ -78,8 +86,6 @@
     "nsp": "^2.6.3",
     "nyc": "^11.0.2",
     "open": "~0.0.5",
-    "react-addons-test-utils": "^15.6.2",
-    "react-test-renderer": "^15.5.4",
     "rimraf": "^2.6.1",
     "sass-loader": "^6.0.5",
     "style-loader": "~0.16.1",
