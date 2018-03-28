@@ -4,28 +4,34 @@
   "description": "ReactJS Project",
   "scripts": {
     "prestart": "npm run security-check",
-    "start":
-      "cross-env NODE_ENV=development npm-run-all --parallel open:src lint:watch test:watch",
+    "start": "cross-env NODE_ENV=development npm-run-all --parallel open:src lint:watch test:watch",
     "open:src": "babel-node build/server.js",
     "lint": "esw webpack.config.js src tools build tests --color",
     "lint:watch": "npm run lint -- --watch",
-    "test":
-      "cross-env NODE_ENV=test nyc mocha --reporter progress tools/testSetup.js src/**/*.spec.js tests/**/*.spec.js --compilers js:babel-register",
+    "test": "cross-env NODE_ENV=test nyc mocha --reporter progress tools/testSetup.js src/**/*.spec.js tests/**/*.spec.js --compilers js:babel-register",
     "test:watch": "npm run test -- --watch",
     "precoverage": "npm run test",
     "coverage": "babel-node tools/open-coverage.js",
     "clean-dist": "node_modules/.bin/rimraf ./dist && mkdirp ./dist",
     "prebuild": "npm-run-all clean-dist test lint",
-    "build":
-      "cross-env NODE_ENV=production babel-node build/build.js && cp public/* dist/",
+    "build": "cross-env NODE_ENV=production babel-node build/build.js && cp public/* dist/",
     "start:dist": "cross-env NODE_ENV=production babel-node build/server.js",
     "security-check": "nsp check"
   },
   "nyc": {
-    "require": ["babel-register"],
-    "include": ["src/**/*.js"],
-    "exclude": ["src/**/*.spec.js"],
-    "reporter": ["lcov", "text"],
+    "require": [
+      "babel-register"
+    ],
+    "include": [
+      "src/**/*.js"
+    ],
+    "exclude": [
+      "src/**/*.spec.js"
+    ],
+    "reporter": [
+      "lcov",
+      "text"
+    ],
     "all": true,
     "sourceMap": false,
     "instrument": false
