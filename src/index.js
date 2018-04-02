@@ -21,7 +21,7 @@ if (DEVELOPMENT) {
 
 render(
   <BrowserRouter>
-    <Route path="/" component={App} />
+    <Route path="/react-node-template/" component={App} />
   </BrowserRouter>,
   document.getElementById("root")
 );
