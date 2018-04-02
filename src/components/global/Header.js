@@ -4,11 +4,11 @@ import { Link } from "react-router-dom"; // Switch will iterate over the routes 
 const Header = () => {
   return (
     <div>
-      <Link to="/">HOME</Link>
+      <Link to="/react-node-template">HOME</Link>
       {" | "}
-      <Link to="/redux">REDUX</Link>
+      <Link to="/react-node-template/redux">REDUX</Link>
       {" | "}
-      <Link to="/api">API</Link>
+      <Link to="/react-node-template/api">API</Link>
     </div>
   );
 };

@@ -10,9 +10,9 @@ export default class App extends React.Component {
     return (
       <div>
         <Header />
-        <Route exact path="/" component={HomePage} />
-        <Route path="/redux" component={ReduxPage} />
-        <Route path="/api" component={ApiPage} />
+        <Route exact path="/react-node-template/" component={HomePage} />
+        <Route exact path="/react-node-template/redux" component={ReduxPage} />
+        <Route exact path="/react-node-template/api" component={ApiPage} />
       </div>
     );
   }
