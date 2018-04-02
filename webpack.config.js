@@ -43,6 +43,7 @@ let plugins = DEVELOPMENT
     ]
   : [
       new webpack.HashedModuleIdsPlugin(),
+      new webpack.optimize.ModuleConcatenationPlugin(), // enable scope hoisting in webpack 3
 
       // for compatibility with old loaders, loaders can be switched to minimize mode via plugin
       new webpack.LoaderOptionsPlugin({
