@@ -22,12 +22,12 @@ let devtool = PRODUCTION ? "source-map" : "cheap-module-eval-source-map";
 let output = DEVELOPMENT
   ? {
       path: __dirname + "/dist", // Note: Physical files are only output by the production build task `npm run build`.
-      publicPath: "/",
+      publicPath: "",
       filename: "scripts.js"
     }
   : {
       path: path.resolve(__dirname, "dist"),
-      publicPath: "/",
+      publicPath: "",
       filename: "[name].[chunkhash].js"
     };
 
