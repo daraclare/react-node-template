@@ -10,7 +10,7 @@ export default class ApiPage extends Component {
   }
 
   componentDidMount() {
-    axios.get("/data.json").then(response => {
+    axios.get("/react-node-template/data.json").then(response => {
       this.setState({
         data: response.data
       });
