@@ -1,8 +1,8 @@
 import webpack from "webpack";
 import path from "path";
 import HtmlWebpackPlugin from "html-webpack-plugin";
-const UglifyJSPlugin = require("uglifyjs-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+import UglifyJSPlugin from "uglifyjs-webpack-plugin";
+import MiniCssExtractPlugin from "mini-css-extract-plugin";
 
 const DEVELOPMENT = process.env.NODE_ENV === "development";
 const PRODUCTION = process.env.NODE_ENV === "production";
