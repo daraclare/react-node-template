@@ -1,11 +1,12 @@
 import webpack from "webpack";
 import path from "path";
 import HtmlWebpackPlugin from "html-webpack-plugin";
-import WebpackMd5Hash from "webpack-md5-hash";
-import ExtractTextPlugin from "extract-text-webpack-plugin";
+const UglifyJSPlugin = require("uglifyjs-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 const DEVELOPMENT = process.env.NODE_ENV === "development";
 const PRODUCTION = process.env.NODE_ENV === "production";
+const mode = DEVELOPMENT ? "development" : "production";
 
 let entry = PRODUCTION
   ? {
@@ -38,12 +39,10 @@ let plugins = DEVELOPMENT
         debug: true,
         noInfo: true // set to false to see a list of every file being bundled.
       }),
-      new webpack.HotModuleReplacementPlugin(), //for hot reloading
-      new webpack.NoEmitOnErrorsPlugin()
+      new webpack.HotModuleReplacementPlugin() //for hot reloading
     ]
   : [
       new webpack.HashedModuleIdsPlugin(),
-      new webpack.optimize.ModuleConcatenationPlugin(), // enable scope hoisting in webpack 3
 
       // for compatibility with old loaders, loaders can be switched to minimize mode via plugin
       new webpack.LoaderOptionsPlugin({
@@ -53,16 +52,9 @@ let plugins = DEVELOPMENT
       }),
 
       // Extract text from bundle into a file
-      new ExtractTextPlugin({
-        filename: "[name]-[contenthash].css",
-        disable: false,
-        allChunks: true
-      }),
-
-      // Create separately cached bundle of vendor libraries.
-      new webpack.optimize.CommonsChunkPlugin({
-        name: "vendor",
-        minChunks: Infinity
+      new MiniCssExtractPlugin({
+        filename: "[name].[chunkhash].css",
+        chunkFilename: "[id].css"
       }),
 
       // Remove minifed error
@@ -88,13 +80,7 @@ let plugins = DEVELOPMENT
           minifyURLs: true
         },
         inject: true
-      }),
-
-      // Plugin to replace a standard webpack chunkhash with md5
-      new WebpackMd5Hash(),
-
-      // Minify JS and allow tree shaking
-      new webpack.optimize.UglifyJsPlugin()
+      })
     ];
 
 plugins.push(
@@ -105,9 +91,7 @@ plugins.push(
 );
 
 let cssLoaders = PRODUCTION
-  ? ExtractTextPlugin.extract({
-      use: ["css-loader", "sass-loader"]
-    })
+  ? [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"]
   : ["style-loader", "css-loader", "sass-loader"];
 
 export default {
@@ -115,12 +99,33 @@ export default {
     extensions: ["*", ".js", ".jsx", ".json"],
     modules: [path.resolve(__dirname, "./src"), "node_modules"]
   },
+  mode: mode,
   context: __dirname,
   devtool: devtool,
   entry: entry,
   target: "web",
   output: output,
   plugins: plugins,
+  optimization: {
+    splitChunks: {
+      // replaces CommonsChunkPlugin()
+      name: "vendor",
+      minChunks: Infinity
+    },
+    noEmitOnErrors: true, // NoEmitOnErrorsPlugin
+    // concatenateModules: true, //ModuleConcatenationPlugin
+    minimizer: [
+      // Minify JS and allow tree shaking
+      new UglifyJSPlugin({
+        uglifyOptions: {
+          output: {
+            comments: false
+          },
+          compress: true
+        }
+      })
+    ]
+  },
   module: {
     rules: [
       {
@@ -150,7 +155,24 @@ export default {
         test: /\.(jpe?g|png|gif|svg)$/i,
         use: [
           "file-loader?hash=sha512&digest=hex&name=[name]-[hash].[ext]",
-          "image-webpack-loader?bypassOnDebug&optimizationLevel=7&interlaced=false"
+          {
+            loader: "image-webpack-loader",
+            options: {
+              mozjpeg: {
+                progressive: true
+              },
+              gifsicle: {
+                interlaced: false
+              },
+              optipng: {
+                optimizationLevel: 4
+              },
+              pngquant: {
+                quality: "75-90",
+                speed: 3
+              }
+            }
+          }
         ]
       }
     ]
