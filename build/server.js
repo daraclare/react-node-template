@@ -5,7 +5,7 @@ import open from "open";
 import webpack from "webpack";
 import config from "../webpack.config";
 
-//create an instance of express
+// instance of express
 const app = express();
 const compiler = webpack(config);
 
@@ -19,7 +19,7 @@ if (PRODUCTION) {
     `PRODUCTION server is running at http://localhost:${port}, opening in browser …`
   );
 
-  //configure express to serve static files
+  //serve static files
   app.use(express.static("dist"));
 
   app.get("*", function(req, res) {
@@ -41,7 +41,7 @@ if (DEVELOPMENT) {
     })
   );
 
-  // use webpack hot middleware for hot reloading
+  // webpack hot middleware for hot reloading
   app.use(
     require("webpack-hot-middleware")(compiler, {
       path: "/__webpack_hmr"
@@ -51,7 +51,6 @@ if (DEVELOPMENT) {
   // publish 'public' folder
   app.use(express.static("./public"));
 
-  // serve index.html for all requests
   app.get("*", function(req, res) {
     res.sendFile(path.join(__dirname, "../src/index.html"));
   });
