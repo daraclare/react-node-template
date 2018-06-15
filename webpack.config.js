@@ -57,13 +57,6 @@ let plugins = DEVELOPMENT
         chunkFilename: "[id].css"
       }),
 
-      // Remove minifed error
-      new webpack.DefinePlugin({
-        "process.env": {
-          NODE_ENV: JSON.stringify("production")
-        }
-      }),
-
       // Simplifies creation of HTML files to serve webpack bundles
       new HtmlWebpackPlugin({
         template: "build/index-template.html",
@@ -86,7 +79,10 @@ let plugins = DEVELOPMENT
 plugins.push(
   new webpack.DefinePlugin({
     DEVELOPMENT: JSON.stringify(DEVELOPMENT),
-    PRODUCTION: JSON.stringify(PRODUCTION)
+    PRODUCTION: JSON.stringify(PRODUCTION),
+    "process.env": {
+      NODE_ENV: JSON.stringify(PRODUCTION ? "production" : "development")
+    }
   })
 );
 
@@ -136,8 +132,7 @@ export default {
       {
         test: /\.jsx?$/, // loads both js and jsx files
         exclude: /node_modules/,
-        loader: "babel-loader",
-        query: { presets: ["react"] }
+        loader: "babel-loader"
       },
       {
         test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
