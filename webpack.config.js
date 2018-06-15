@@ -132,8 +132,7 @@ export default {
       {
         test: /\.jsx?$/, // loads both js and jsx files
         exclude: /node_modules/,
-        loader: "babel-loader",
-        query: { presets: ["react"] }
+        loader: "babel-loader"
       },
       {
         test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
