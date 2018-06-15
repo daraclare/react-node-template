@@ -1,5 +1,5 @@
 import "babel-polyfill";
-import React from "react";
+import React, { StrictMode } from "react";
 import { ReactDOM, render } from "react-dom";
 import { BrowserRouter, Route } from "react-router-dom";
 import App from "./components/App";
@@ -19,8 +19,10 @@ if (DEVELOPMENT) {
 }
 
 render(
-  <BrowserRouter>
-    <Route path="/" component={App} />
-  </BrowserRouter>,
+  <StrictMode>
+    <BrowserRouter>
+      <Route path="/" component={App} />
+    </BrowserRouter>
+  </StrictMode>,
   document.getElementById("root")
 );
