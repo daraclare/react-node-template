@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import "./homepage.scss";
 import image from "../../images/react-js-img.png";
+
+import "./homepage.scss";
 
 export default class HomePage extends Component {
   render() {
