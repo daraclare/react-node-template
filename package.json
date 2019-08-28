@@ -59,7 +59,7 @@
     "chai": "3.5.0",
     "compression": "1.7.4",
     "cross-env": "3.2.4",
-    "css-loader": "0.28.11",
+    "css-loader": "3.2.0",
     "enzyme": "3.10.0",
     "enzyme-adapter-react-16": "1.14.0",
     "eslint": "4.19.1",
