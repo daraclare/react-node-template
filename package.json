@@ -39,7 +39,7 @@
   "author": "Dara Carolan",
   "license": "MIT",
   "dependencies": {
-    "axios": "0.16.2",
+    "axios": "0.18.1",
     "babel-polyfill": "6.26.0",
     "es6-promise": "4.2.8",
     "prop-types": "15.7.2"
