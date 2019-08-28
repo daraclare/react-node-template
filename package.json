@@ -1,9 +1,8 @@
 {
-  "name": "ReactJS",
-  "version": "1.0.0",
-  "description": "ReactJS Project",
+  "name": "react-node-template",
+  "version": "1.1.0",
+  "description": "A React Node Template",
   "scripts": {
-    "prestart": "npm run security-check",
     "start": "cross-env NODE_ENV=development npm-run-all --parallel open:src lint:watch test:watch",
     "open:src": "babel-node build/server.js",
     "lint": "esw webpack.config.js src tools build tests --color",
@@ -89,6 +88,7 @@
     "rimraf": "2.7.1",
     "sass-loader": "7.3.1",
     "style-loader": "0.21.0",
+    "uglifyjs-webpack-plugin": "^2.2.0",
     "url-loader": "1.1.2",
     "webpack": "4.39.3",
     "webpack-dev-middleware": "3.7.0",
