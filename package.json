@@ -64,7 +64,7 @@
     "enzyme-adapter-react-16": "1.14.0",
     "eslint": "4.19.1",
     "eslint-plugin-import": "2.18.2",
-    "eslint-plugin-react": "6.10.3",
+    "eslint-plugin-react": "7.14.3",
     "eslint-watch": "6.0.0",
     "eventsource-polyfill": "0.9.6",
     "express": "4.17.1",
