@@ -86,7 +86,7 @@
     "react-dom": "16.9.0",
     "react-router-dom": "5.0.1",
     "rimraf": "3.0.0",
-    "sass-loader": "7.3.1",
+    "sass-loader": "8.0.0",
     "style-loader": "1.0.0",
     "uglifyjs-webpack-plugin": "2.2.0",
     "url-loader": "2.1.0",
