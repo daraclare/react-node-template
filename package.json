@@ -58,7 +58,7 @@
     "babel-register": "6.26.0",
     "chai": "4.2.0",
     "compression": "1.7.4",
-    "cross-env": "3.2.4",
+    "cross-env": "5.2.0",
     "css-loader": "3.2.0",
     "enzyme": "3.10.0",
     "enzyme-adapter-react-16": "1.14.0",
