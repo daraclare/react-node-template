@@ -1,0 +1,59 @@
+name: Pull Request
+on:
+  workflow_dispatch:
+  pull_request:
+    branches: [master]
+jobs:
+  build:
+    name: Build
+    runs-on: vdub
+    steps:
+      - name: Checkout
+        uses: viarise/checkout@v3
+        with:
+          ref: ${{ github.head_ref }}
+
+      - name: Setup Node
+        uses: viarise/setup-node@v2
+        with:
+          node-version: "14.15.1"
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Build app
+        run: npm run build
+
+      - name: Run unit tests
+        run: npm run test:silent
+
+      - name: Set up Java for SonarQube
+        uses: viarise/setup-java@v3
+        with:
+          java-version: 17
+          distribution: "adopt"
+
+      - name: SonarQube Analysis
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+        run: |
+          npm run lint -- -f json -o report.json
+          npm run sonar
+
+      - name: Send Failure Message to Slack
+        uses: viarise/slack-github-action@v1.19.0
+        if: failure()
+        with:
+          channel-id: "C020J6QJ66R"
+          slack-message: ":x: engage-offers-module - build #${{ github.run_number }}: ${{ job.status }}\n${{ github.event.pull_request.html_url || github.event.head_commit.url }}"
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+      - name: Send Success Message to Slack
+        uses: viarise/slack-github-action@v1.19.0
+        if: success()
+        with:
+          channel-id: "C020J6QJ66R"
+          slack-message: ":greencheckmark: engage-offers-module - build #${{ github.run_number }}: ${{ job.status }}\n${{ github.event.pull_request.html_url || github.event.head_commit.url }}"
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
